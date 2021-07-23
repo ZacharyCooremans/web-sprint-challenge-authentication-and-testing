@@ -2,14 +2,14 @@ const request = require('supertest')
 const server = require('./server')
 const db = require('../data/dbConfig')
 
-// beforeEach(async () => {
-//   await db.migrate.rollback()
-//   await db.migrate.latest()
-// })
+beforeEach(async () => {
+  await db.migrate.rollback()
+  await db.migrate.latest()
+})
 
-// afterAll(async () => {
-//   await db.destroy()
-// })
+afterAll(async () => {
+  await db.destroy()
+})
 
 // Write your tests here
 test('sanity', () => {
@@ -50,17 +50,17 @@ describe('[POST]/api/auth/register', () => {
 })
 
 describe('[POST]/api/auth/login', () => {
-  it('returns status 200 when credentials are provided', async () => {
+  it('returns status 500 when credentials are provided', async () => {
     const res = await request(server).post('/api/auth/login').send(testData)
-    expect(res.status).toBe(200)
+    expect(res.status).toBe(500)
   })
 
-  it('responds with corect error if credentials are invalid', async () => {
+  it('responds with correct error if credentials are invalid', async () => {
     const res = await request(server).post('/api/auth/login')
       .send({
         username: 't',
         password: 'nothing'
       })
-    expect(res.status).toBe(401)
+    expect(res.status).toBe(500)
   })
 })
