@@ -50,9 +50,9 @@ describe('[POST]/api/auth/register', () => {
 })
 
 describe('[POST]/api/auth/login', () => {
-  it('returns status 500 when credentials are provided', async () => {
+  it('returns status 401 when credentials are provided', async () => {
     const res = await request(server).post('/api/auth/login').send(testData)
-    expect(res.status).toBe(500)
+    expect(res.status).toBe(401)
   })
 
   it('responds with correct error if credentials are invalid', async () => {
