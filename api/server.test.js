@@ -61,6 +61,6 @@ describe('[POST]/api/auth/login', () => {
         username: 't',
         password: 'nothing'
       })
-    expect(res.status).toBe(500)
+    expect(res.status).toBe(401)
   })
 })
