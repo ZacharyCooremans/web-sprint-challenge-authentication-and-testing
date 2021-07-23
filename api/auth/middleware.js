@@ -41,6 +41,8 @@ const checkValidation = (req, res, next) => {
             status: 422,
             message: 'username and password required'
         })
+    } else {
+        next()
     }
 }
 
