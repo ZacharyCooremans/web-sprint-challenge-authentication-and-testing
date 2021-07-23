@@ -1,4 +1,5 @@
 const router = require('express').Router();
+const Users = require('./auth-model')
 
 router.post('/register', (req, res) => {
   res.end('implement register, please!');
